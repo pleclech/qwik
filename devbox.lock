@@ -1,0 +1,30 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "bun@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#bun",
+      "source": "devbox-search",
+      "version": "0.6.9"
+    },
+    "nodePackages.pnpm@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#nodePackages.pnpm",
+      "source": "devbox-search",
+      "version": "8.6.5"
+    },
+    "nodejs@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#nodejs_20",
+      "source": "devbox-search",
+      "version": "20.3.1"
+    },
+    "rustup@latest": {
+      "last_modified": "2023-06-29T16:20:38Z",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#rustup",
+      "source": "devbox-search",
+      "version": "1.26.0"
+    }
+  }
+}
