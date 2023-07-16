@@ -93,6 +93,11 @@ export async function apiExtractor(config: BuildConfig) {
   );
   createTypesApi(
     config,
+    join(config.packagesDir, 'qwik-city', 'adapters', 'bun-server', 'vite'),
+    join(config.packagesDir, 'qwik-city', 'lib', 'adapters', 'bun-server', 'vite', 'index.d.ts')
+  );
+  createTypesApi(
+    config,
     join(config.packagesDir, 'qwik-city', 'adapters', 'deno-server', 'vite'),
     join(config.packagesDir, 'qwik-city', 'lib', 'adapters', 'deno-server', 'vite', 'index.d.ts')
   );
@@ -125,6 +130,11 @@ export async function apiExtractor(config: BuildConfig) {
     config,
     join(config.packagesDir, 'qwik-city', 'middleware', 'azure-swa'),
     join(config.packagesDir, 'qwik-city', 'lib', 'middleware', 'azure-swa', 'index.d.ts')
+  );
+  createTypesApi(
+    config,
+    join(config.packagesDir, 'qwik-city', 'middleware', 'bun'),
+    join(config.packagesDir, 'qwik-city', 'lib', 'middleware', 'bun', 'index.d.ts')
   );
   createTypesApi(
     config,
