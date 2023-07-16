@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "nodejs@latest",
+    "rustup@latest",
+    "nodePackages.pnpm@latest",
+    "bun@latest"
+  ],
+  "shell": {
+    "init_hook": [],
+    "scripts": {}
+  }
+}
