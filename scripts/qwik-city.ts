@@ -24,12 +24,14 @@ export async function buildQwikCity(config: BuildConfig) {
     buildAdapterAzureSwaVite(config),
     buildAdapterCloudflarePagesVite(config),
     buildAdapterCloudRunVite(config),
+    buildAdapterBunVite(config),
     buildAdapterDenoVite(config),
     buildAdapterNodeServerVite(config),
     buildAdapterNetlifyEdgeVite(config),
     buildAdapterSharedVite(config),
     buildAdapterStaticVite(config),
     buildAdapterVercelEdgeVite(config),
+    buildMiddlewareBun(config),
     buildMiddlewareCloudflarePages(config),
     buildMiddlewareNetlifyEdge(config),
     buildMiddlewareAzureSwa(config),
@@ -38,6 +40,7 @@ export async function buildQwikCity(config: BuildConfig) {
     buildMiddlewareRequestHandler(config),
     buildMiddlewareVercelEdge(config),
     buildStatic(config),
+    buildStaticBun(config),
     buildStaticNode(config),
     buildStaticDeno(config),
   ]);
@@ -63,6 +66,11 @@ export async function buildQwikCity(config: BuildConfig) {
         types: './adapters/azure-swa/vite/index.d.ts',
         import: './adapters/azure-swa/vite/index.mjs',
         require: './adapters/azure-swa/vite/index.cjs',
+      },
+      './adapters/bun-server/vite': {
+        types: './adapters/bun-server/vite/index.d.ts',
+        import: './adapters/bun-server/vite/index.mjs',
+        require: './adapters/bun-server/vite/index.cjs',
       },
       './adapters/cloudflare-pages/vite': {
         types: './adapters/cloudflare-pages/vite/index.d.ts',
@@ -107,6 +115,10 @@ export async function buildQwikCity(config: BuildConfig) {
       './middleware/azure-swa': {
         types: './middleware/azure-swa/index.d.ts',
         import: './middleware/azure-swa/index.mjs',
+      },
+      './middleware/bun': {
+        types: './middleware/bun/index.d.ts',
+        import: './middleware/bun/index.mjs',
       },
       './middleware/cloudflare-pages': {
         types: './middleware/cloudflare-pages/index.d.ts',
@@ -381,6 +393,35 @@ async function buildAdapterCloudRunVite(config: BuildConfig) {
   });
 }
 
+async function buildAdapterBunVite(config: BuildConfig) {
+  const entryPoints = [join(config.srcQwikCityDir, 'adapters', 'bun-server', 'vite', 'index.ts')];
+
+  await build({
+    entryPoints,
+    outfile: join(config.distQwikCityPkgDir, 'adapters', 'bun-server', 'vite', 'index.mjs'),
+    bundle: true,
+    platform: 'node',
+    target: nodeTarget,
+    format: 'esm',
+    external: ADAPTER_EXTERNALS,
+    plugins: [resolveAdapterShared('../../shared/vite/index.mjs')],
+  });
+
+  await build({
+    entryPoints,
+    outfile: join(config.distQwikCityPkgDir, 'adapters', 'bun-server', 'vite', 'index.cjs'),
+    bundle: true,
+    platform: 'node',
+    target: nodeTarget,
+    format: 'cjs',
+    external: ADAPTER_EXTERNALS,
+    plugins: [
+      resolveAdapterShared('../../shared/vite/index.cjs'),
+      resolveRequestHandler('../../../middleware/request-handler/index.cjs'),
+    ],
+  });
+}
+
 async function buildAdapterDenoVite(config: BuildConfig) {
   const entryPoints = [join(config.srcQwikCityDir, 'adapters', 'deno-server', 'vite', 'index.ts')];
 
@@ -579,6 +620,21 @@ async function buildMiddlewareCloudflarePages(config: BuildConfig) {
   });
 }
 
+async function buildMiddlewareBun(config: BuildConfig) {
+  const entryPoints = [join(config.srcQwikCityDir, 'middleware', 'bun', 'index.ts')];
+
+  await build({
+    entryPoints,
+    outfile: join(config.distQwikCityPkgDir, 'middleware', 'bun', 'index.mjs'),
+    bundle: true,
+    platform: 'node',
+    target: nodeTarget,
+    format: 'esm',
+    external: MIDDLEWARE_EXTERNALS,
+    plugins: [resolveRequestHandler('../request-handler/index.mjs')],
+  });
+}
+
 async function buildMiddlewareDeno(config: BuildConfig) {
   const entryPoints = [join(config.srcQwikCityDir, 'middleware', 'deno', 'index.ts')];
 
@@ -694,6 +750,19 @@ async function buildStatic(config: BuildConfig) {
     platform: 'node',
     target: nodeTarget,
     format: 'cjs',
+  });
+}
+
+async function buildStaticBun(config: BuildConfig) {
+  const entryPoints = [join(config.srcQwikCityDir, 'static', 'bun', 'index.ts')];
+
+  await build({
+    entryPoints,
+    outfile: join(config.distQwikCityPkgDir, 'static', 'bun.mjs'),
+    bundle: true,
+    platform: 'neutral',
+    format: 'esm',
+    plugins: [resolveRequestHandler('../middleware/request-handler/index.mjs')],
   });
 }
 
