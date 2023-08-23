@@ -4,6 +4,9 @@
     "build.server": "vite build -c adapters/bun/vite.config.ts",
     "serve": "bun run server/entry.bun.js"
   },
+  "devDependencies": {
+    "bun-types": "^0.7.3"
+  },
   "__qwik__": {
     "priority": 20,
     "displayName": "Adapter: Bun Server",
