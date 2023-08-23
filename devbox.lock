@@ -1,23 +1,17 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "bun@latest": {
-      "last_modified": "2023-06-29T16:20:38Z",
-      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#bun",
-      "source": "devbox-search",
-      "version": "0.6.9"
-    },
     "nodePackages.pnpm@latest": {
-      "last_modified": "2023-06-29T16:20:38Z",
-      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#nodePackages.pnpm",
+      "last_modified": "2023-08-08T03:07:33Z",
+      "resolved": "github:NixOS/nixpkgs/844ffa82bbe2a2779c86ab3a72ff1b4176cec467#nodePackages.pnpm",
       "source": "devbox-search",
-      "version": "8.6.5"
+      "version": "8.6.11"
     },
     "nodejs@latest": {
-      "last_modified": "2023-06-29T16:20:38Z",
-      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#nodejs_20",
+      "last_modified": "2023-07-23T03:35:12Z",
+      "resolved": "github:NixOS/nixpkgs/af8cd5ded7735ca1df1a1174864daab75feeb64a#nodejs_20",
       "source": "devbox-search",
-      "version": "20.3.1"
+      "version": "20.5.0"
     },
     "rustup@latest": {
       "last_modified": "2023-06-29T16:20:38Z",
@@ -25,6 +19,12 @@
       "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#rustup",
       "source": "devbox-search",
       "version": "1.26.0"
+    },
+    "wasm-pack@latest": {
+      "last_modified": "2023-06-30T04:44:22Z",
+      "resolved": "github:NixOS/nixpkgs/3c614fbc76fc152f3e1bc4b2263da6d90adf80fb#wasm-pack",
+      "source": "devbox-search",
+      "version": "0.12.1"
     }
   }
 }

@@ -3,10 +3,9 @@
     "nodejs@latest",
     "rustup@latest",
     "nodePackages.pnpm@latest",
-    "bun@latest"
+    "wasm-pack@latest"
   ],
   "shell": {
-    "init_hook": [],
-    "scripts": {}
+    "init_hook": []
   }
 }
